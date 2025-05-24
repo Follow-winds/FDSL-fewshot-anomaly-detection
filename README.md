@@ -6,7 +6,7 @@
 
 Few-shot anomaly detection aims to identify and locate image anomalies using limited normal samples, enabling rapid deployment in industrial and safety applications. However, recent multimodal pre-trained methods often rely on statistical comparisons between query and reference features, which may lead to overlapping anomaly scores due to neglecting normal region interference and local contextual correlations. To address this, we propose the Feature Discrepancy guided Score Learning (FDSL) method. FDSL explicitly models deviations from normal patterns via a Feature Discrepancy (FD) module that separates patch features into normal and deviation components. An Anomaly Score Learning (ASL) module is then introduced to capture feature correlations and integrate neighboring patch information for more discriminative scores. Additionally, a Local-enhanced Feature Extraction (LFE) mechanism improves detection of small-area anomalies, while an image feature index memory bank reduces redundancy to optimize memory usage. Experimental results on MVTec and VisA datasets show that FDSL achieves state-of-the-art performance in 1-shot, 2-shot, and 4-shot segmentation tasks and is competitive in classification, demonstrating its effectiveness and adaptability in few-sample scenarios.
 
-## OverView of FASL
+## OverView of FDSL
 
 ![overview](./assets/main-pic.png) 
 
@@ -55,7 +55,7 @@ mvtec/
 
 Apply the same approach to the **VisA** dataset.
 
-### Run FASL
+### Run FDSL
 
 #### train and test
 
@@ -89,22 +89,22 @@ bash trainAndTest.sh {model_name} {device} {useNAM} {winmode} {win-size} {win-st
 
 for example:
 
-**FASL** with **NAM** and **LFE**
+**FDSL** with **NAM** and **LFE**
 
 ~~~bash
-bash trainAndTest.sh fasl 0 1 mul 13 2 0.5 14 1
+bash trainAndTest.sh fdsl 0 1 mul 13 2 0.5 14 1
 ~~~
 
-**FASL** with **NAM** and without **LFE**
+**FDSL** with **NAM** and without **LFE**
 
 ~~~bash
-bash trainAndTest.sh fasl 0 1 nan 13 2 0.5 14 1
+bash trainAndTest.sh fdsl 0 1 nan 13 2 0.5 14 1
 ~~~
 
-**FASL** without **NAM** and without **LFE**:
+**FDSL** without **NAM** and without **LFE**:
 
 ~~~bash
-bash trainAndTest.sh fasl 0 0 nan 13 2 0.5 14 1
+bash trainAndTest.sh fdsl 0 0 nan 13 2 0.5 14 1
 ~~~
 
 #### only test
